@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>テストページ</title>
+    <link rel="stylesheet" href="../../static/css/test/test.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="form-area">
+        <div id="heading-area" class="clearfix">
+          <h2 id="heading">指定欄</h2>
+          <div class="clearfix" id="switch-form">
+            <a class="show selected-form" id="file-show" href="#" data-show="file">ファイル形式</a>
+            <a class="show" id="code-show" href="#" data-show="code">コード形式</a>
+          </div>
+        </div>
+        <form id="item-form" action="{{ url_for('test_result') }}" method="post">
+          <div class="show-items" id="file-items">
+            <input type="file" name="data">
+          </div>
+          <div id="code-items">
+            <textarea id="code-data" name="data"></textarea>
+          </div>
+          <button id="check-btn" type="button" name="button">判定</button>
+        </form>
+      </div>
+    </div>
+    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../static/js/test/test.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}結果{% endblock %}
+{% block main %}
+{% if output_text and image_path %}
+  <div id="result-text">
+
+    <table id="text-area">
+      <tr>
+        <th id="col-tagname">タグ名</th>
+        <th id="col-count">カウント</th>
+      </tr>
+      {% for tagname, count in output_text %}
+        <tr>
+          <td class="tagname">{{ tagname }}</td>
+          <td>{{ count }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% if csv_path %}
+    <a id="csv-file" href="{{ csv_path }}" download="tag.csv">CSVファイルを保存</a>
+  {% endif %}
+  <div id="result-image">
+    <img src="{{ image_path }}" alt="分析結果">
+  </div>
+{% else %}
+  <p id="error">エラー：ファイルが選択されていません</p>
+{% endif %}
+{% endblock %}

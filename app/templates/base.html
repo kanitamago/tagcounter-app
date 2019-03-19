@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}|Tag Counter</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+  </head>
+  <body>
+    <header id="header" class="clearfix">
+      <a href="{{ url_for('index') }}" id="title-logo-area">
+        <h1 id="title">
+          <img id="logo-image" src="../static/images/logo-title.png" alt="タグカウンター">
+        </h1>
+      </a>
+      <div id="description-area">
+        <h2 class="heading">手順</h2>
+        <ol id="num-list">
+          <li>HTMLファイルを指定</li>
+          <li>CSVファイル化の有無を選択</li>
+          <li>「カウント」をクリック</li>
+        </ul>
+      </div>
+      <div id="file-area" class="clearfix">
+        <div id="heading-area" class="clearfix">
+          <h2 id="select-heading" class="heading heading-item">指定欄</h2>
+          <div id="switch-form">
+            <a class="switch selected-form heading-item" id="file-show" data-show="file">ファイル</a>
+            <a class="switch heading-item" id="code-show" data-show="code">コード</a>
+          </div>
+        </div>
+        <div id="item-text">
+          <ul class="item-list">
+            <li id="item-text-word" class="item text item-margin">対象ファイル</li>
+            <li class="item text">CSVファイル</li>
+          </ul>
+        </div>
+        <form id="item-form" action="{{ url_for('show_result') }}" method="post" enctype="multipart/form-data">
+          <div class="show-items" id="file-items">
+            <label class="item item-margin" id="item-label" for="file-data">
+              <span id="label-text">+ファイルを選択</span>
+              <input class="item" id="file-data" type="file" name="file-data">
+            </label>
+            <div class="csv-area">
+              作成する<input id="file-default-check" type="radio" name="csv-check" value="1" checked>
+              作成しない<input type="radio" name="csv-check" value="0">
+            </div>
+          </div>
+          <div id="code-items">
+            <textarea id="code-data" name="text-data"></textarea>
+            <div class="csv-area">
+              作成する<input id="code-default-check" type="radio" name="csv-check" value="1">
+              作成しない<input type="radio" name="csv-check" value="0">
+            </div>
+          </div>
+          <button class="item" id="submit-btn" type="submit" name="button">カウント</button>
+        </form>
+      </div>
+    </header>
+    <div id="main-area" class="clearfix">
+      {% block main %}
+      {% endblock %}
+    </div>
+    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/myscript.js"></script>
+  </body>
+</html>
